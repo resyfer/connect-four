@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#player {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  font-size: 5vh;
+}
+
+#connect-four-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 25vh;
+  width: 25vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-color: #1e1e1e;
+  border-radius: 2vh;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  height: 3vh;
+  width: 3vh;
+  margin: 1vh;
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.css.map */
