@@ -1,25 +1,91 @@
+:root {
+  --current-color: red;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
-#player {
+div#player {
   position: absolute;
-  top: 15%;
+  top: 2.5%;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   font-size: 5vh;
+  width: 100%;
+  text-align: center;
 }
 
-#connect-four-container {
+div#player div#player-color {
   position: absolute;
-  top: 50%;
+  top: 120%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background-color: var(--current-color);
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+div#connect-four-choice {
+  position: absolute;
+  top: 25%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  height: 25vh;
-  width: 25vh;
+  height: 7.5vh;
+  width: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 2vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+div#connect-four-choice div.choice {
+  position: relative;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  height: 5vh;
+  width: 5vh;
+  margin: 2vh;
+  cursor: pointer;
+}
+
+div#connect-four-choice div.choice:hover {
+  background-color: var(--current-color);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+div#connect-four-choice div.choice span {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 7vh;
+}
+
+div#connect-four-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 60vh;
+  width: 60vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,16 +93,22 @@
       flex-wrap: wrap;
   background-color: #1e1e1e;
   border-radius: 2vh;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
 }
 
-.box {
+div#connect-four-container div.box {
   position: relative;
   top: 0;
   left: 0;
   border-radius: 50%;
-  height: 3vh;
-  width: 3vh;
-  margin: 1vh;
-  cursor: pointer;
+  height: 8vh;
+  width: 8vh;
+  margin: 2vh;
+  background-color: white;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
 }
 /*# sourceMappingURL=index.css.map */

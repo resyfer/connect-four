@@ -1,36 +1,95 @@
+:root {
+  --current-color: red;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
-#player {
+div#player {
   position: absolute;
-  top: 15%;
+  top: 2.5%;
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 5vh;
+  width: 100%;
+  text-align: center;
+
+  div#player-color {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--current-color);
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+    transition-duration: 0.3s;
+  }
 }
 
-#connect-four-container {
+div#connect-four-choice {
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 25vh;
-  width: 25vh;
+  height: 7.5vh;
+  width: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 2vh;
+  justify-content: space-around;
+  align-content: space-around;
+
+  div.choice {
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    height: 5vh;
+    width: 5vh;
+    margin: 2vh;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--current-color);
+      transition-duration: 0.3s;
+    }
+
+    span {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 7vh;
+    }
+  }
+}
+
+div#connect-four-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60vh;
+  width: 60vh;
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(30, 30, 30, 1);
   border-radius: 2vh;
-}
-
-.box {
-  position: relative;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  height: 3vh;
-  width: 3vh;
-  margin: 1vh;
-  cursor: pointer;
+  justify-content: space-around;
+  align-content: space-around;
+  
+  div.box {
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    height: 8vh;
+    width: 8vh;
+    margin: 2vh;
+    background-color: white;
+    transition-duration: 0.3s;
+  }
 }
