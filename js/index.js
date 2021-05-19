@@ -1,53 +1,56 @@
-var boxSide = 5;
+var sideCount = 5;
+
+var columnFillCount = [0, 0, 0, 0, 0];
+
 var colors = ["white", "red", "blue"];
 
-var currentPlayer = 1;
+var playerTurn = 1;
+var playerTurnDisplay = document.getElementById('player-number');
+
+
+var boxList = document.getElementsByClassName('box');
 
 var board = [];
-for(let i = 0; i<boxSide; i++) {
+var boardDiv = [];
+for(let i = 0; i<sideCount; i++) {
   board.push([]);
-  for(let j = 0; j<boxSide; j++) board[i][j] = 0;
-}
-
-var boxes = document.getElementsByClassName('box');
-
-var boxList = [];
-for(let i = 0; i<boxSide; i++) {
-  boxList.push([]);
-  for(let j = 0; j<boxSide; j++) {
-    boxList[i][j] = boxes[(i*boxSide) + j];
-    boxList[i][j].style.backgroundColor = colors[0];
-    boxList[i][j].addEventListener('click', ()=>{
-      playerChoice(i, j);
-    });
+  boardDiv.push([]);
+  for(let j = 0; j<sideCount; j++) {
+    board[i][j] = 0;
+    boardDiv[i][j] = boxList[(i*sideCount) + j];
   }
 }
 
-var playerTurn = document.getElementById('player-number');
-
-function playerChoice(i, j) {
-  if(checkChoice(i, j) == 1) {
-    currentPlayer = (currentPlayer)%(colors.length-1) + 1;
-    playerTurn.innerHTML = currentPlayer;
-  }
-  //gameWinCheck();
+var choiceList = document.getElementsByClassName('choice');
+for(let i = 0; i<choiceList.length; i++) {
+  choiceList[i].addEventListener('click', ()=> {
+    playerChoice(i);
+    //gameWinCondition();
+  });
 }
 
-function checkChoice(i, j) {
-  if(boxList[i][j].style.backgroundColor != "white") {
-    alert("Place already taken, please try again.");
-    return 0;
+function playerChoice(i) {
+  if(choiceCheck(i) == 1) {
+    turnUpdate(i);
   } else {
-    while(i+1<5 && boxList[i+1][j].style.backgroundColor == "white") i++;
-    boxList[i][j].style.backgroundColor = colors[currentPlayer];
-    return 1;
+    alert("Choice unavailable. Please Try Again!");
   }
 }
 
-// function gameWinCheck() {
-//   for(let i = 0; i<boxSide; i++) {
-//     for(let j = 0; j<boxSide; j++) {
+function choiceCheck(i) {
+  if(columnFillCount[i] == sideCount) return 0;
+  else return 1;
+}
 
-//     }
-//   }
+function turnUpdate(i) {
+  boardDiv[sideCount - columnFillCount[i] - 1][i].style.backgroundColor = colors[playerTurn];
+  board[sideCount - columnFillCount[i] - 1][i] = playerTurn;
+  playerTurn = (playerTurn%2) + 1;
+  columnFillCount[i]++;
+  document.documentElement.style.setProperty('--current-color', colors[playerTurn]);
+  playerTurnDisplay.innerHTML = playerTurn;
+}
+
+// function gameWinCondition() {
+
 // }
