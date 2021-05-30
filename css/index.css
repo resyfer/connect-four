@@ -5,6 +5,7 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 div#player {
@@ -110,5 +111,47 @@ div#connect-four-container div.box {
   background-color: white;
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
+}
+
+div#win-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  text-align: center;
+  font-size: 7vh;
+  z-index: 5;
+  color: #4722df;
+  display: none;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+div#win-screen div#player-won {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+div#win-screen div#play-again {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #4722df;
+  color: white;
+  height: 10vh;
+  aspect-ratio: 4/1;
+  border-radius: 5vh;
+  font-size: 4vh;
+  line-height: 10vh;
+  cursor: pointer;
 }
 /*# sourceMappingURL=index.css.map */
