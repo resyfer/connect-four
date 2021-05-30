@@ -15,6 +15,9 @@ playAgain.addEventListener('click', ()=> {
   location.reload();
 })
 
+var playerWinner = document.getElementById('player-won');
+var gameOverScreen = document.getElementById('win-screen');
+
 var board = [];
 var boardDiv = [];
 for(let i = 0; i<sideCount; i++) {
@@ -62,6 +65,8 @@ function turnUpdate(i) {
 }
 
 function gameWinCondition(possibleWinner) {
+  
+  gameDraw();
   
   for(let i = 1; i<colors.length; i++) {
     if(checkColor(i)) {
@@ -127,6 +132,20 @@ function checkL2RDiagonal(i) {
       }
     }
   }
+  
+  for(let j = 0; j<board[0].length; j++) {
+    let count = 0;
+    for(let k = 0; j+k<board[0].length; k++) {
+      if(board[j+k][k] == i) {
+        count++;
+        if(count >= 4) return true;
+      } else {
+        count = 0;
+      }
+    }
+  }
+
+  return false;
 }
 
 function checkR2LDiagonal(i) {
@@ -141,11 +160,34 @@ function checkR2LDiagonal(i) {
       }
     }
   }
+
+  for(let j = 0; j<board[0].length; j++) {
+    let count = 0;
+    for(let k = 0; j+k<board[0].length; k++) {
+      if(board[j + k][board[0].length - 1 -k] == i) {
+        count++;
+        if(count >= 4) return true;
+      } else {
+        count = 0;
+      }
+    }
+  }
+
+  return false;
+}
+
+function gameDraw() {
+  let fillCount = 0;
+  for(let i = 0; i<columnFillCount.length; i++) {
+    fillCount+=columnFillCount[i];
+  }
+  if(fillCount == 25) {
+    gameOverScreen.style.display = "block";
+    playerWinner.innerHTML = "Players Draw!!!";
+  }
 }
 
 function gameOver(winner) {
-  let playerWinner = document.getElementById('player-winner-number');
-  let gameOverScreen = document.getElementById('win-screen');
   gameOverScreen.style.display = "block";
-  playerWinner.innerHTML = winner;
+  playerWinner.innerHTML = "Player " + winner + " Won!!!";
 }
